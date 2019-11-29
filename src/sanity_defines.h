@@ -90,6 +90,8 @@ public:
 };
 #define WrapAp(v)\
 	apWrapper ap;\
-	va_start(ap,v);
+	va_start(ap.operator va_list&(),v);
+	//          ^^^^^^^^^^^^^^^^^^^
+	// MSVC complains without that call.
 
 #endif//_RENUM_SANITY_DEFS_H_INCLUDED_
